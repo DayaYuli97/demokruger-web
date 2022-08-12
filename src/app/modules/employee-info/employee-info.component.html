@@ -1,0 +1,91 @@
+<div class="home">
+    <div class="body-content">
+        <div class="header-content">
+            <div class="header-content-nav">
+            <h2>Información del Empleado</h2>
+        </div>
+        </div>
+        <div *ngIf="!isLogin">
+        <div class="header-content">
+              <input type="text" class="form-control" id="usser" [(ngModel)]="usser" 
+                  placeholder="Ingrese Usuario"   >
+              <input type="text" class="form-control" id="pass" [(ngModel)]="pass"
+                  placeholder="Ingrese Contraseña" >
+    
+          </div>
+          <button (click)="loginEmployees()"> Ingresar </button>
+        </div>
+          <div *ngIf="isLogin">
+            <div class="card-body">
+                <div class="form-group">
+                  <label for="cedula">CEDULA</label>
+                  <input type="number" class="form-control" id="cedula" [(ngModel)]="employeesVO.idCard"
+                    placeholder="Ingrese la Cedula" maxlength="10" required>
+                </div>
+                <div class="form-group">
+                  <label for="nombre">Nombre</label>
+                  <input type="text" class="form-control" id="nombre" [(ngModel)]="employeesVO.name"
+                    placeholder="Ingrese en nombre" maxlength="100" required>
+                </div>
+                <div class="form-group">
+                  <label for="apellido">APELLIDO</label>
+                  <input type="text" class="form-control" id="apellido" [(ngModel)]="employeesVO.lastname"
+                    placeholder="Ingrese la Apellido" maxlength="100" required>
+                </div>
+                <div class="form-group">
+                  <label for="correo">CORREO</label>
+                  <input type="mail" class="form-control" id="correo" [(ngModel)]="employeesVO.mail"
+                    placeholder="Ingrese el Correo" maxlength="10" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="fecha">FECHA DE NACIMIENTO</label>
+                    <input type="date" class="form-control" id="fecha" [(ngModel)]="employeesVO.dateBirth"
+                      placeholder="Ingrese Fecha de NACIMIENTO" maxlength="10" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="direccion">DIRECCIÓN</label>
+                    <input type="text" class="form-control" id="direccion" [(ngModel)]="employeesVO.address"
+                      placeholder="Ingrese Direecion" maxlength="10" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="telefono">TELEFONO</label>
+                    <input type="text" class="form-control" id="telefono" [(ngModel)]="employeesVO.cellphone"
+                      placeholder="Ingrese Nro de telefono" maxlength="10" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="estadov">ESTADO DE VACUNA</label>
+                    <select name="Estado Vacuna" [(ngModel)]="employeesVO.vaccineStatus" (change)="change(employeesVO.vaccineStatus)">
+                        <option value="" selected> SELECCIONE</option>
+                        <option value="SI"> VACUNADO</option>
+                        <option value="NO">NO VACUNADO</option>
+                      </select>
+                  </div>
+                  <div *ngIf="isVaccine">
+                      <div class="form-group">
+                      <label for="tipov">TIPO DE VACUNA</label>
+                      <select name="Tipo Vacuna" [(ngModel)]="vaccineVO.vaccine"  >
+                        <option value="AstraZeneca"> AstraZeneca</option>
+                        <option value="Sputnik">Sputnik</option>
+                        <option value="Pfizer"> Pfizer</option>
+                        <option value="Jhonson&Jhonson">Jhonson&Jhonson</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="dosis">NRO DE DOSIS</label>
+                        <input type="text" class="form-control" id="dosis" [(ngModel)]="vaccineVO.doseVaccine"
+                          placeholder="Ingrese Nro de telefono">
+                      </div>
+                      <div class="form-group">
+                        <label for="fechav">FECHA DE VACUNACIÓN</label>
+                        <input type="date" class="form-control" id="fechav" [(ngModel)]="vaccineVO.dateVaccine"
+                          placeholder="Ingrese Fecha de Vacunación">
+                      </div>
+                  </div>
+                  
+                  <button (click)="updateDatoEmployees()"> Actualizar </button>
+                  
+              </div>
+          </div>
+    </div>
+</div>

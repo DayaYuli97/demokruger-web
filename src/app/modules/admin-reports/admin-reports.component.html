@@ -1,0 +1,82 @@
+<div class="home">
+    <div class="body-content">
+      <div class="header-content">
+        <div class="header-content-nav">
+            <h2>Reportes Administrador</h2>
+        </div>
+      </div>
+  
+      <div class="header-content">
+        <select name="Estado Vacuna" [(ngModel)]="statusVaccine" *ngIf="!typeVaccine && !dateStart && !dateEnd">
+            <option value="SI"> VACUNADO</option>
+            <option value="NO">NO VACUNADO</option>
+          </select>
+          <select name="Tipo Vacuna" [(ngModel)]="typeVaccine"  *ngIf="!statusVaccine && !dateStart && !dateEnd">
+            <option value="AstraZeneca"> AstraZeneca</option>
+            <option value="Sputnik">Sputnik</option>
+            <option value="Pfizer"> Pfizer</option>
+            <option value="Jhonson&Jhonson">Jhonson&Jhonson</option>
+          </select>
+          <input type="text" class="form-control" id="fechaS" [(ngModel)]="dateStart"
+              placeholder="Ingrese Fecha Inicio"  *ngIf="!typeVaccine && !statusVaccine ">
+          <input type="text" class="form-control" id="fechaE" [(ngModel)]="dateEnd"
+              placeholder="Ingrese Fecha Fin" *ngIf="!typeVaccine && !statusVaccine ">
+
+      </div>
+      <button (click)="buscar()"> Buscar </button>
+      <div *ngIf="lstEmployees">
+        <p-table [value]="lstEmployees" [lazy]="true" class="table table-bordered  table-striped">
+            <ng-template pTemplate="header" class="head">
+              <tr *ngIf="lstEmployees.length >0">
+                <!-- <th>id Empleado</th> -->
+                <th>Cedula</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>correo</th>
+                <th>Usuario</th>
+                <th>Esta Vacunado</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-employees let-rowIndex="rowIndex">
+              <tr>
+                <!-- <td>{{employees.idEmployes}}</td> -->
+                <td>{{employees.idCard}}</td>
+                <td>{{employees.name}}</td>
+                <td>{{employees.lastname}}</td>
+                <td>{{employees.mail}}</td>
+                <td>{{employees.usser}}</td>
+                <td>{{employees.vaccineStatus}}</td>
+              </tr>
+            </ng-template>
+          </p-table>
+      </div>
+      <div *ngIf="lstVaccines">
+        <p-table [value]="lstVaccines" [lazy]="true" class="table table-bordered  table-striped">
+            <ng-template pTemplate="header" class="head">
+              <tr *ngIf="lstVaccines.length >0">
+                <!-- <th>id Empleado</th> -->
+                <th>Cedula</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Direecion</th>
+                <th>Tipo Vacuna</th>
+                <th>Fecha Vacunación</th>
+                <th>Nro de Dosis</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-vaccine let-rowIndex="rowIndex">
+              <tr >
+                <!-- <td>{{employees.idEmployes}}</td> -->
+                <td>{{vaccine.idCard}}</td>
+                <td>{{vaccine.name}}</td>
+                <td>{{vaccine.lastname}}</td>
+                <td>{{vaccine.address}}</td>
+                <td>{{vaccine.vaccine}}</td>
+                <td>{{vaccine.dateVaccine | date:'yyyy-MM-dd'}}</td>
+                <td>{{vaccine.doseVaccine}}</td>
+              </tr>
+            </ng-template>
+          </p-table>
+      </div>
+    </div>
+  </div>

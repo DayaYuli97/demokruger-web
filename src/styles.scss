@@ -1,0 +1,51 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~font-awesome/css/font-awesome.css";
+@import "~bootstrap/scss/bootstrap.scss";
+
+.home {
+    margin: 55px auto auto;
+}
+
+/*Disabled style*/
+.disabled {
+    pointer-events: none !important;
+    opacity: 0.3;
+    cursor: not-allowed !important;
+  }
+
+.body-content {
+    padding-top: 4px;
+    position: relative;
+    width: 100%;
+    padding-right: 5px;
+    padding-left: 260px;
+    // margin-left: 260px;
+    // max-width: fit-content;
+}
+
+.header-content-nav {
+    padding-top: 0%;
+    padding-bottom: 0.25rem;
+}
+
+.link-content-nav {
+    color: #007bff;
+    cursor: pointer;
+    
+}
+
+.header-content{
+    border-bottom: 1px solid #838586;
+    margin-bottom: 5px;
+}
+
+.main-menu-content li {
+    padding-left: 0.4em;
+    padding-right: 0.4em;
+    border-right: 1px solid #838586;
+    border-width: 0.15em;
+  }
+
+  .main-menu-content li:last-child {
+    border-right: none;
+  }

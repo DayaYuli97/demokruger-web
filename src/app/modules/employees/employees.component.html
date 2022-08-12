@@ -1,0 +1,158 @@
+
+
+<div class="home">
+  <div class="body-content">
+    <div class="header-content">
+      <div class="header-content-nav">
+        <ul class="navbar-nav bd-navbar-nav flex-row main-menu-content li navbar-content-nav">
+          <li class="nav-item-cjd" routerLinkActive="active" title="Home">
+            <a class="nav-link link-content-nav" (click)="openModal(modalTest, null)">
+              <em class="fa fa-plus"></em> CREAR
+            </a>
+          </li>
+         
+        </ul>
+      </div>
+    </div>
+
+    <button (click)="employees()"> Listado </button>
+    
+    <p-table [value]="lstEmployees" [lazy]="true" class="table table-bordered  table-striped">
+      <ng-template pTemplate="header" class="head">
+        <tr>
+          <!-- <th>id Empleado</th> -->
+          <th>Cedula</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>correo</th>
+          <th>Usuario</th>
+          <th style="width: 10%">Acciones</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-employees let-rowIndex="rowIndex">
+        <tr>
+          <!-- <td>{{employees.idEmployes}}</td> -->
+          <td>{{employees.idCard}}</td>
+          <td>{{employees.name}}</td>
+          <td>{{employees.lastname}}</td>
+          <td>{{employees.mail}}</td>
+          <td>{{employees.usser}}</td>
+          <td style="width: 9%">
+            <div class="row" style="text-align:center">
+              <div class="col-md-4"
+                style="font-size: 16px;color: #444146 !important;border-right: solid 1px gray;padding: 0px; cursor: pointer;">
+                <i class="fa fa-pencil-square-o" aria-hidden="true" title="Editar Empleados"
+                  [ngClass]="{'disabled': employees.status === false}" (click)="openModal(modalTest, employees)"></i>
+              </div>
+              <div class="col-md-4" *ngIf="employees.status === false"
+                style="font-size: 16px;color: red;padding: 0px; cursor: pointer;">
+                <i class="fa fa-toggle-off" aria-hidden="true" title="Activar Empleados"
+                  [ngClass]="{'disabled': employees.status === true}"
+                  (click)="openOptionsEmployees(modalOptionEmployees, employees,true)"></i>
+              </div>
+              <div class="col-md-4" *ngIf="employees.status === true"
+                style="font-size: 16px;color: #008cff;padding: 0px; cursor: pointer;">
+                <i class="fa fa-toggle-on" aria-hidden="true" title="Desactivar Empleados"
+                  [ngClass]="{'disabled': employees.status === false}"
+                  (click)="openOptionsEmployees(modalOptionEmployees, employees,false)"></i>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+
+<!-- MODAL CREAR ACTUALIZAR -->
+<div [config]="{backdrop: 'static',keyboard: false}" bsModal #modalTest="bs-modal" class="modal fade" tabindex="-1"
+  role="dialog" aria-labelledby="dialog-sizes-name1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="card">
+        <div class="card-header">
+          <strong>Datos de Empleados</strong>
+          <button type="button" class="close pull-right" (click)="modalTest.hide()" aria-label="Close">
+            <em class="fa fa-close fa-xs"></em>
+          </button>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="cedula">CEDULA</label>
+            <input type="text" class="form-control" id="cedula" [(ngModel)]="employeesVO.idCard"
+              placeholder="Ingrese la Cedula" (keypress)="onlyPositiveNumbers($event)" maxlength="10" required>
+          </div>
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre" [(ngModel)]="employeesVO.name"
+              placeholder="Ingrese en nombre" (keypress)="onlyLetters($event)" maxlength="100" required>
+          </div>
+          <div class="form-group">
+            <label for="apellido">APELLIDO</label>
+            <input type="text" class="form-control" id="apellido" [(ngModel)]="employeesVO.lastname"
+              placeholder="Ingrese la Apellido" (keypress)="onlyLetters($event)" maxlength="100" required>
+          </div>
+          <div class="form-group">
+            <label for="correo">CORREO</label>
+            <input type="email" class="form-control" id="correo" [(ngModel)]="employeesVO.mail"
+              placeholder="Ingrese el Correo" maxlength="100" required>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button type="submit" class="btn btn-sm btn-primary" (click)="createEmployees(modalTest)"><i
+            class="fa fa-save"></i>
+          Guardar</button>
+        <button type="reset" class="btn btn-sm btn-danger" (click)="modalTest.hide()"><i class="fa fa-ban"></i>
+          Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL ACTIVAR DESACTIVAR  -->
+<div [config]="{backdrop: 'static',keyboard: false}" bsModal #modalOptionEmployees="bs-modal" class="modal fade"
+    tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name1">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="dialog-sizes-name1" class="modal-title pull-left">Advertencia</h4>
+                <button type="button" class="close pull-right" (click)="modalOptionEmployees.hide()"
+                    aria-label="Close">
+                    <em class="fa fa-close "></em>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-1" style="max-width: 1.5%;flex:none;padding: 0px"></div>
+                    <div class="col-md-10" style="border: solid 1px #ced3d8;
+                            padding-top: 15px;
+                            padding-bottom: 15px;
+                            border-radius: 5px;
+                            max-width: 97%;
+                            flex: none;">
+                        <label *ngIf="!isActivate">El Empleado seleccionada est&aacute; a punto
+                            de inactivarse.</label>
+                        <label *ngIf="isActivate">El Empleado seleccionada est&aacute; a punto
+                            de activarse.</label>
+                        <br />
+                        <br />
+                        <strong>¿Est&aacute; seguro(a) que quiere continuar con la acci&oacute;n actual?</strong>
+                    </div>
+                    <div class="col-md-1" style="max-width: 1.5%;flex:none;padding: 0px"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" type="button"
+                    (click)="acceptDialogActivateDesactivate(modalOptionEmployees)">
+                    <em class="fa fa-check"></em> Aceptar
+                </button>
+                <button class="btn btn-danger" type="button"
+                    (click)="modalOptionEmployees.hide()">
+                    <em class="fa fa-close "></em> Cancelar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+

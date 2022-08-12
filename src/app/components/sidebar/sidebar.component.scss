@@ -1,0 +1,33 @@
+.sidebar-conf {
+    // margin: 55px auto auto;
+    padding-top: 2px;
+    box-sizing: border-box;
+    border-color: black;
+    float: left;
+    text-align: left;
+    padding-left: 0.1em;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    min-width: 255px;
+    max-width: 255px;
+    min-height: 651px;
+    max-height: 651px;
+}
+
+.scroll-div {
+    height: 150px;
+    overflow-y: scroll;
+}
+
+.side-header{
+    padding: 0.5rem 0.5rem;
+}

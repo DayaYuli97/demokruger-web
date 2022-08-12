@@ -1,0 +1,80 @@
+.toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    color: #23282c;
+    font-weight: 600;
+  
+    flex-direction: row;
+    height: 55px;
+    padding: 0;
+    margin: 0;
+    background-color: #fff;
+    border-bottom: 1px solid #c8ced3;
+  }
+  
+  .toolbar img {
+    margin: 0 16px;
+  }
+  
+  .toolbar #twitter-logo {
+    height: 40px;
+    margin: 0 8px;
+  }
+  
+  .toolbar #youtube-logo {
+    height: 40px;
+    margin: 0 16px;
+  }
+  
+  .toolbar #twitter-logo:hover,
+  .toolbar #youtube-logo:hover {
+    opacity: 0.8;
+  }
+  
+  .spacer {
+    flex: 1;
+  }
+  
+  .right {
+    float: right;
+    text-align: right;
+    padding-right: 1.5em;
+  }
+  
+  .header-nav {
+    padding-left: 1em;
+  }
+  
+  .main-menu li {
+    padding-left: 0.4em;
+    padding-right: 0.4em;
+    border-right: 1px solid #e3e5e7;
+    border-width: 0.15em;
+  }
+  .main-menu li:first-child {
+    border-left: 1px solid #e3e5e7;
+    border-width: 0.15em;
+  }
+  .main-menu li:last-child {
+    border-right: none;
+  }
+  
+  .link-nav{
+    color: #424b52;
+    cursor: pointer;
+  }
+  
+  .icon-style{
+    padding-left: 0.5em;
+    max-width: 25%
+  }
+  
+  .title-style{
+    padding-left: 0.5em;
+    padding-top: 0.5em
+  }
+  
