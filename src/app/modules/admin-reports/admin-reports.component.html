@@ -16,11 +16,12 @@
             <option value="Sputnik">Sputnik</option>
             <option value="Pfizer"> Pfizer</option>
             <option value="Jhonson&Jhonson">Jhonson&Jhonson</option>
+            <option value="Sinovac">Sinovac</option>
           </select>
           <input type="text" class="form-control" id="fechaS" [(ngModel)]="dateStart"
-              placeholder="Ingrese Fecha Inicio"  *ngIf="!typeVaccine && !statusVaccine ">
+              placeholder=" yyyy-MM-dd"  *ngIf="!typeVaccine && !statusVaccine ">
           <input type="text" class="form-control" id="fechaE" [(ngModel)]="dateEnd"
-              placeholder="Ingrese Fecha Fin" *ngIf="!typeVaccine && !statusVaccine ">
+              placeholder="yyyy-MM-dd" *ngIf="!typeVaccine && !statusVaccine ">
 
       </div>
       <button (click)="buscar()"> Buscar </button>
